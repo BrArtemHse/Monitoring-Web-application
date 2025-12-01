@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  monitoring-app:
+    build: .
+    container_name: monitoring-app
+    restart: always        # автозапуск при старте системы и рестарт при сбое
+    ports:
+      - "8080:8080"        # пробрасываем порт приложения наружу
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./logs:/var/log
